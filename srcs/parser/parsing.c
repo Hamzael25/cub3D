@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 19:12:38 by bilalzentou      ###   ########.fr       */
+/*   Updated: 2024/01/11 13:50:30 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	parsing(char *map, t_data *data)
 {
-	if (check_file(map, "buc.") || check_open_file(data, map, 1))
+	if (check_file(map, "buc.") || check_open_file(data, map, 1, 0))
 		return (1);
 	if (parsing_map(data->parse))
 		return (ft_putstr_fd("Error\nMap Wrong1\n", 2), 1);
@@ -49,7 +49,7 @@ int	check_file(char *map, char *ext)
 	return (ft_free_tab(tmp), 0);
 }
 
-int	check_open_file(t_data *data, char *file, int flg)
+int	check_open_file(t_data *data, char *file, int flg, int cl)
 {
 	int	fd;
 
@@ -63,12 +63,13 @@ int	check_open_file(t_data *data, char *file, int flg)
 	else if (flg == 2)
 		return (ft_putstr_fd("Error\nTexture not Found\n", 2), 1);
 	fd = open(file, O_RDONLY);
+	assign_fd(data, cl, fd);
 	if (fd < 1)
 		return (ft_putstr_fd("Error\nfailed to open file\n", 2), 1);
 	if (flg == 1)
 	{
 		if (check_valid_file(data->parse, fd))
-			return (1);
+			return (data->parse->fdmap = fd, 1);
 	}
 	return (0);
 }

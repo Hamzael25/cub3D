@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:02:42 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:25:36 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/11 13:59:17 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ typedef struct s_parse
 	char			*so;
 	char			*we;
 	char			*ea;
+	int				fdmap;
+	int				fdn;
+	int				fds;
+	int				fde;
+	int				fdw;
 	char			*ceiling;
 	char			*floor;
 	int				gmap;
@@ -166,7 +171,7 @@ int			count_space(char **str, int *i);
 
 int			check_path(t_data *data);
 
-int			check_open_file(t_data *data, char *file, int flg);
+int			check_open_file(t_data *data, char *file, int flg, int cl);
 
 int			check_file(char *map, char *ext);
 
@@ -250,5 +255,9 @@ void		put_sprite(t_sprite *sprite, t_data *data, int r);
 void		put_pixel(t_win *draw, int x, int y, int color);
 
 void		draw_tile(t_data *data, char map_val, int x, int y);
+
+void		assign_fd(t_data *data, int cl, int fd);
+
+void 		close_fd(t_data *data);
 
 #endif

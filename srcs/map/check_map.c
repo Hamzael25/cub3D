@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 02:19:56 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2024/01/10 19:11:29 by bilalzentou      ###   ########.fr       */
+/*   Updated: 2024/01/11 13:45:19 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ int	check_map(char **map)
 
 int	check_path(t_data *data)
 {
-	if (check_open_file(data, data->parse->no, 2)
-		|| check_open_file(data, data->parse->so, 2)
-		|| check_open_file(data, data->parse->ea, 2)
-		|| check_open_file(data, data->parse->we, 2))
+	if (check_open_file(data, data->parse->no, 2, 1)
+		|| check_open_file(data, data->parse->so, 2, 2)
+		|| check_open_file(data, data->parse->ea, 2, 3)
+		|| check_open_file(data, data->parse->we, 2, 4))
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
+/*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 02:18:05 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2024/01/10 19:12:14 by bilalzentou      ###   ########.fr       */
+/*   Updated: 2024/01/11 14:03:18 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,18 @@ int	count_space(char **str, int *i)
 		cpt++;
 	}
 	return (cpt);
+}
+
+void	assign_fd(t_data *data, int cl, int fd)
+{
+	if (cl == 0)
+		data->parse->fdmap = fd;
+	else if (cl == 1)
+		data->parse->fdn = fd;
+	else if (cl == 2)
+		data->parse->fds = fd;
+	else if (cl == 3)
+		data->parse->fde = fd;
+	else if (cl == 4)
+		data->parse->fdw = fd;
 }

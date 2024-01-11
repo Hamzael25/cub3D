@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
+/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 13:58:34 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 19:09:55 by bilalzentou      ###   ########.fr       */
+/*   Created: 2022/11/26 13:46:55 by hel-ouar          #+#    #+#             */
+/*   Updated: 2024/01/11 13:06:44 by hamzaelouar      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

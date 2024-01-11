@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 02:18:05 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2024/01/10 14:19:48 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:12:14 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ int	count_space(char **str, int *i)
 	}
 	return (cpt);
 }
-

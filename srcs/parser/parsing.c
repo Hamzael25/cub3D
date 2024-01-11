@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:19:04 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:12:38 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,3 @@ void	set_color_c_f(t_data *data)
 	b = data->parse->color_floor[2];
 	data->parse->color_floor_hexa = (r * 65536) + (g * 256) + b;
 }
-

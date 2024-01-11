@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_cub.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:00:21 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2024/01/10 14:27:36 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:10:21 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,3 @@ char	**ft_split_cub(char const *s, char c)
 		return (NULL);
 	return (ft_spliit(s, final, c, 0));
 }
-

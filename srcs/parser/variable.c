@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variable.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:19:08 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:12:44 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,3 @@ int	get_color(t_parse *parse, char *color, int flg)
 	ft_free_tab(split_color);
 	return (0);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:13:25 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:16:05 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:10:42 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ void	ft_free_tab(char **tab)
 		free(tab[i]);
 	free(tab);
 }
-

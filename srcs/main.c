@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:02:18 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:21:31 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:11:50 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int	main(int argc, char **argv)
 	}
 	return (ft_putstr_fd("Error number args\n", 2), 1);
 }
-

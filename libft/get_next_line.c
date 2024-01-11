@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:58:34 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:23:52 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:09:55 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,3 @@ char	*ft_clean(char *tmp)
 	swap[j] = '\0';
 	return (free(tmp), swap);
 }
-

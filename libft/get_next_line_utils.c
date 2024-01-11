@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 13:46:55 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:23:46 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:10:06 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ int	ft_strerchr(char *s, char c)
 	}
 	return (0);
 }
-

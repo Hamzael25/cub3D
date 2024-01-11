@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 02:19:56 by hamzaelouar       #+#    #+#             */
-/*   Updated: 2024/01/10 14:21:24 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:11:29 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,3 @@ int	check_path(t_data *data)
 		return (1);
 	return (0);
 }
-

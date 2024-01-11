@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+        */
+/*   By: bilalzentout <bilalzentout@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 07:34:41 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/10 14:27:47 by hamzaelouar      ###   ########.fr       */
+/*   Updated: 2024/01/10 19:10:55 by bilalzentou      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,3 @@ char	**ft_split(char const *s, char c)
 	tab[i] = 0;
 	return (tab);
 }
-

@@ -6,7 +6,7 @@
 /*   By: hel-ouar <hel-ouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:44:47 by hel-ouar          #+#    #+#             */
-/*   Updated: 2024/01/11 14:03:13 by hel-ouar         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:07:21 by hel-ouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void	free_win(t_data *data, int mod)
 			mlx_destroy_window(data->win->mlx, data->win->mlx_w);
 		if (data->win->mlx)
 			mlx_destroy_display(data->win->mlx);
-		if (data->win->mlx)
-			free(data->win->mlx);
 	}
 }
 

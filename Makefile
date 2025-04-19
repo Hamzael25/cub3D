@@ -122,14 +122,14 @@ up: build
 	@docker compose -f $(COMPOSE_FILE) down --volumes --remove-orphans \
 		&& echo "[✅] Docker services stopped"
 
-down: docker_compose_down
+down: clean docker_compose_down
 
-reset: down build up
+reset: clean down build up
 
 prune:
 	@echo "[…] Pruning Docker system…"
 	@docker system prune --all --force \
 		&& docker volume prune --force \
 		&& docker network prune --force \
-		&& echo "[✅] Docker runed" \
-		|| echo "[❌] Docker Prune failed"
+		&& echo "[✅] Prune Docker effectué" || \
+		echo "[❌] Échec du Prune Docker"

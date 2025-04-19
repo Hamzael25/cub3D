@@ -1,91 +1,135 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hamzaelouardi <hamzaelouardi@student.42    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/03 17:38:07 by hamzaelouar       #+#    #+#              #
-#    Updated: 2023/12/04 12:21:05 by hamzaelouar      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# ————————————————————————————————————————————————————————————————————————————————
+# Variables communes
+# ————————————————————————————————————————————————————————————————————————————————
+NAME         := ./cub3D
+NAME_SHORT   := cub3D
 
-# Nom de l'exécutable
-NAME = ./cub3D
-NAME_SHORT = cub3D
+CC           := gcc -g3
+CFLAGS       := -Wall -Wextra -Werror
 
-# Compilateur et options de compilation
-CC = gcc -g3
-CFLAGS = -Wall -Wextra -Werror
+_CLEAR       := \033[0K\r\c
+_OK          := [\033[32mOK\033[0m]
 
-# Affichage prompt
-_CLEAR      = \033[0K\r\c
-_OK         = [\033[32mOK\033[0m]
+SRC_DIR      := srcs
+OBJ_DIR      := .objs/
+INC_DIR      := includes
+LIBFT_DIR    := libft
+MLX_DIR      := mlx_linux
 
-# Répertoires
-SRC_DIR = srcs
-OBJ_DIR = .objs/
-INC_DIR = includes
-LIBFT_DIR = libft
-MLX_DIR = mlx_linux
+MLX_A        := $(MLX_DIR)/libmlx.a
+LIBFT_A      := $(LIBFT_DIR)/libft.a
 
-# Librairies
-MLX_A = mlx_linux/libmlx.a
-LIBFT_A = libft/libft.a
+HEADER       := $(INC_DIR)/cub3d.h
 
-# Dépendances générales
-HEADER = $(INC_DIR)/cub3d.h
+SRCS_MAP     := $(addprefix $(SRC_DIR)/map/, check_map.c)
+SRCS_PLAY    := $(addprefix $(SRC_DIR)/play/, game.c key.c move.c raycasting.c raycast.c stage.c)
+SRCS_PARSER  := $(addprefix $(SRC_DIR)/parser/, file.c parsing.c variable.c)
+SRCS_UTILS   := $(addprefix $(SRC_DIR)/utils/, init.c free.c parsing_utils.c utils.c raycasting_utils.c)
+SRCS_MAIN    := $(addprefix $(SRC_DIR)/, main.c)
 
-# Chemins complets des fichiers source pour chaque sous-dossier
-SRCS_MAP = $(addprefix $(SRC_DIR)/map/, check_map.c)
-SRCS_PLAY = $(addprefix $(SRC_DIR)/play/, game.c key.c move.c raycasting.c raycast.c stage.c)
-SRCS_PARSER = $(addprefix $(SRC_DIR)/parser/, file.c parsing.c variable.c)
-SRCS_UTILS = $(addprefix $(SRC_DIR)/utils/, init.c free.c parsing_utils.c utils.c raycasting_utils.c)
-SRCS_MAIN = $(addprefix $(SRC_DIR)/, main.c)
+OBJS_MAP     := $(patsubst $(SRC_DIR)/map/%.c,    $(OBJ_DIR)/map/%.o,    $(SRCS_MAP))
+OBJS_PLAY    := $(patsubst $(SRC_DIR)/play/%.c,   $(OBJ_DIR)/play/%.o,   $(SRCS_PLAY))
+OBJS_PARSER  := $(patsubst $(SRC_DIR)/parser/%.c, $(OBJ_DIR)/parser/%.o, $(SRCS_PARSER))
+OBJS_UTILS   := $(patsubst $(SRC_DIR)/utils/%.c,  $(OBJ_DIR)/utils/%.o,  $(SRCS_UTILS))
+OBJS_MAIN    := $(patsubst $(SRC_DIR)/%.c,        $(OBJ_DIR)/%.o,        $(SRCS_MAIN))
 
-# Fichiers objets mandatory correspondants
-OBJS_MAP = $(patsubst $(SRC_DIR)/map/%.c, $(OBJ_DIR)/map/%.o, $(SRCS_MAP))
-OBJS_PLAY = $(patsubst $(SRC_DIR)/play/%.c, $(OBJ_DIR)/play/%.o, $(SRCS_PLAY))
-OBJS_PARSER = $(patsubst $(SRC_DIR)/parser/%.c, $(OBJ_DIR)/parser/%.o, $(SRCS_PARSER))
-OBJS_UTILS = $(patsubst $(SRC_DIR)/utils/%.c, $(OBJ_DIR)/utils/%.o, $(SRCS_UTILS))
-OBJS_MAIN = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS_MAIN))
+COMPOSE_FILE := docker-compose.yml
 
-# Compilation et édition de liens
-all: $(LIBFT_A) $(MLX_A) $(NAME) 
+# ————————————————————————————————————————————————————————————————————————————————
+# Aide & cible par défaut
+# ————————————————————————————————————————————————————————————————————————————————
+.PHONY: all help
+all: help
 
-# Règle pour construire l'exécutable
+help:
+	@printf "\nUsage: make <target>\n\n"
+	@printf "  compile        Compile le projet (libft + mlx_linux + cub3D)\n"
+	@printf "  clean          Supprime l'exécutable cub3D et le dossier .objs/\n"
+	@printf "  re             Relance proprement la compilation (clean + compile)\n\n"
+	@printf "  build          Build uniquement l'image Docker\n"
+	@printf "  up             Build + run du conteneur + compile + bash interactif\n"
+	@printf "  down           Stoppe et supprime les conteneurs Docker\n"
+	@printf "  reset          down → build → up (relance complète)\n"
+	@printf "  prune          Nettoyage complet Docker (images, volumes, réseaux)\n"
+
+# ————————————————————————————————————————————————————————————————————————————————
+# Compilation native (Linux)
+# ————————————————————————————————————————————————————————————————————————————————
+.PHONY: compile $(LIBFT_A) $(MLX_A)
+compile: $(LIBFT_A) $(MLX_A) $(NAME)
+
 $(NAME): $(OBJS_MAP) $(OBJS_PLAY) $(OBJS_PARSER) $(OBJS_UTILS) $(OBJS_MAIN)
-	@$(CC) $(CFLAGS) $^ -o $@ -L$(MLX_DIR) -L$(LIBFT_DIR) -lmlx -lft -lXext -lX11 -lm
+	@$(CC) $(CFLAGS) $^ -o $@ \
+	    -L$(MLX_DIR) -L$(LIBFT_DIR) -lmlx -lft -lXext -lX11 -lm
 	@echo "$(_OK) $(NAME_SHORT) compiled"
 
-# Construction des fichiers objets mandatory
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
-	@echo "[..] $(NAME_SHORT)... compiling $*.c\r\c"
+	@printf "[..] compiling $*.c\r\c"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
-	@echo "$(_CLEAR)"
+	@printf "$(_CLEAR)"
 
-# Règle pour construire la libft et la mlxpour la version mandatory
 $(LIBFT_A):
-	@echo "[..] libft... compiling $*.c\r\c"
+	@printf "[..] libft... compiling\r\c"
 	@$(MAKE) -C $(LIBFT_DIR) -s
-	@echo "$(_CLEAR)"
+	@printf "$(_CLEAR)"
 
 $(MLX_A):
-	@echo "[..] mlx_linux... compiling $*.c\r\c"
+	@printf "[..] mlx_linux... compiling\r\c"
 	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
-	@echo "$(_CLEAR)"
+	@printf "$(_CLEAR)"
 
-# Règles de nettoyage
+
+# ————————————————————————————————————————————————————————————————————————————————
+# Nettoyage
+# ————————————————————————————————————————————————————————————————————————————————
+.PHONY: clean re
 clean:
-	@$(MAKE) -C $(LIBFT_DIR) clean -s
-	@$(MAKE) -C $(MLX_DIR) clean > /dev/null 2>&1
-	@rm -rf $(OBJ_DIR)
+	-	@rm -f $(NAME)
+	-	@rm -rf $(OBJ_DIR)
+	-	@$(MAKE) -C $(LIBFT_DIR) clean -s
+	-	@rm -rf $(LIBFT_A)
+	-	@echo "[✅] $(NAME_SHORT) et $(OBJ_DIR) supprimés"
 
-fclean: clean
-	@$(MAKE) -C $(LIBFT_DIR) fclean -s
-	@rm -f $(NAME)
+re: clean compile
 
-re: fclean all
+# ————————————————————————————————————————————————————————————————————————————————
+# Commandes Docker (host only)
+# ————————————————————————————————————————————————————————————————————————————————
+.PHONY: build docker_compose_up docker_compose_down up down reset prune
 
-.PHONY: all clean fclean re
+build:
+	@echo "[…] Building Docker image…"
+	@docker compose -f $(COMPOSE_FILE) build \
+		&& echo "[✅] Image built" \
+		|| echo "[❌] Build failed"
+
+docker_compose_up:
+	@docker compose -f $(COMPOSE_FILE) up -d && \
+		echo "[✅] Conteneurs lancés" || \
+		echo "[❌] Échec du lancement des conteneurs"
+
+docker_compose_down:
+	@docker compose -f $(COMPOSE_FILE) down --volumes --remove-orphans && \
+		echo "[✅] Conteneurs arrétés" || \
+		echo "[❌] Échec de l'arrêt des conteneurs"
+
+up: build
+	@echo "[…] Starting container, compiling inside…"
+	@docker compose -f $(COMPOSE_FILE) run --rm cub3d \
+		bash -c "make compile && exec bash"
+	@echo "[…] Container exited — stopping services…"
+	@docker compose -f $(COMPOSE_FILE) down --volumes --remove-orphans \
+		&& echo "[✅] Docker services stopped"
+
+down: docker_compose_down
+
+reset: down build up
+
+prune:
+	@echo "[…] Pruning Docker system…"
+	@docker system prune --all --force \
+		&& docker volume prune --force \
+		&& docker network prune --force \
+		&& echo "[✅] Docker runed" \
+		|| echo "[❌] Docker Prune failed"
